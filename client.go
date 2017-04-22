@@ -82,9 +82,6 @@ func (c *clientCodec) ReadResponseHeader(resp *rpc.Response) error {
 }
 
 func (c *clientCodec) ReadResponseBody(body interface{}) (err error) {
-	if body == nil {
-		return c.dec.Decode(empty.Empty)
-	}
 	if pb, ok := body.(proto.Message); ok {
 		return c.dec.Decode(pb)
 	}
