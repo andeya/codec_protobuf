@@ -86,7 +86,10 @@ func (c *clientCodec) ReadResponseBody(body interface{}) (err error) {
 		return c.dec.Decode(pb)
 	}
 	c.dec.Decode(empty.Empty)
-	return fmt.Errorf("%T does not implement proto.Message", body)
+	if body != nil && body != emptyStruct {
+		return fmt.Errorf("%T does not implement proto.Message", body)
+	}
+	return nil
 }
 
 func encode(enc *Encoder, m interface{}) (err error) {

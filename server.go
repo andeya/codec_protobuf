@@ -90,7 +90,10 @@ func (c *serverCodec) ReadRequestBody(body interface{}) error {
 		return c.dec.Decode(pb)
 	}
 	c.dec.Decode(empty.Empty)
-	return fmt.Errorf("%T does not implement proto.Message", body)
+	if body != nil && body != emptyStruct {
+		return fmt.Errorf("%T does not implement proto.Message", body)
+	}
+	return nil
 }
 
 func (c *serverCodec) Close() error { return c.c.Close() }
