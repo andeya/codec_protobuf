@@ -7,7 +7,7 @@ import (
 	"net/rpc"
 	"sync"
 
-	"github.com/golang/protobuf/proto"
+	"github.com/gogo/protobuf/proto"
 	"github.com/henrylee2cn/codec_protobuf/empty"
 	"github.com/henrylee2cn/codec_protobuf/wirepb"
 )

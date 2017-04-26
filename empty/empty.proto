@@ -1,3 +1,3 @@
 syntax = "proto3";
-package fort;
+package empty;
 message empty {}
